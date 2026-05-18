@@ -7,7 +7,7 @@ app.use(
   cors({
     origin: [
       "https://tasktrackerr-nine.vercel.app",
-      "https://tasktrackerr-ju5pgz4om-subhashtalluri68-3920s-projects.vercel.app"
+      /\.vercel\.app$/
     ]
   })
 );
