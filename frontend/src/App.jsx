@@ -1,4 +1,4 @@
-function App( {
+function App() {
   return (
     <div className="container">
       <h1>Task Tracker CI/CD Project</h1>
