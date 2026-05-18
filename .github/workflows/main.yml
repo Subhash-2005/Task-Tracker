@@ -30,3 +30,6 @@ jobs:
 
       - name: Print Current Directory
         run: pwd
+
+      - name: Node version
+        run: node -v
