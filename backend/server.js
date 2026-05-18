@@ -3,7 +3,9 @@ const cors = require("cors");
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: "https://tasktrackerr-nine.vercel.app/"
+}));
 app.use(express.json());
 
 let tasks = [
