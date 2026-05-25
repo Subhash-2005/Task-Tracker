@@ -25,14 +25,27 @@ app.get("/tasks", (req, res) => {
 });
 
 app.post("/tasks", (req, res) => {
-  const newTask = {
-    id: Date.now(),
-    text: req.body.text
-  };
+  try {
+    if (!req.body.text) {
+      return res.status(400).json({
+        message: "Task text required"
+      });
+    }
 
-  tasks.push(newTask);
+    const newTask = {
+      id: Date.now(),
+      text: req.body.text
+    };
 
-  res.json(tasks);
+    tasks.push(newTask);
+
+    res.json(tasks);
+
+  } catch (error) {
+    res.status(500).json({
+      message: error.message
+    });
+  }
 });
 
 app.delete("/tasks/:id", (req, res) => {
