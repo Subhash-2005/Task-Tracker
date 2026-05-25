@@ -4,7 +4,12 @@ on:
   push:
     branches:
       - main
-    
+      - task-counter
+
+  pull_request:
+    branches:
+      - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,7 +17,7 @@ jobs:
     defaults:
       run:
         working-directory: frontend
-    
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -25,11 +30,5 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Build React App
+      - name: Build Project
         run: npm run build
-
-      - name: Print Current Directory
-        run: pwd
-
-      - name: Node version
-        run: node -v
