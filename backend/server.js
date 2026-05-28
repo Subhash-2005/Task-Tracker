@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const taskRoutes = require("./routes/taskRoutes");
 
 const app = express();
 
@@ -12,49 +13,7 @@ app.use(
   })
 );
 app.use(express.json());
-
-let tasks = [
-  {
-    id: 1,
-    text: "Learn CI/CD"
-  }
-];
-
-app.get("/tasks", (req, res) => {
-  res.json(tasks);
-});
-
-app.post("/tasks", (req, res) => {
-  try {
-    if (!req.body.text) {
-      return res.status(400).json({
-        message: "Task text required"
-      });
-    }
-
-    const newTask = {
-      id: Date.now(),
-      text: req.body.text
-    };
-
-    tasks.push(newTask);
-
-    res.json(tasks);
-
-  } catch (error) {
-    res.status(500).json({
-      message: error.message
-    });
-  }
-});
-
-app.delete("/tasks/:id", (req, res) => {
-  const id = Number(req.params.id);
-
-  tasks = tasks.filter((task) => task.id !== id);
-
-  res.json(tasks);
-});
+app.use("/tasks", taskRoutes);
 
 const PORT = 5000;
 

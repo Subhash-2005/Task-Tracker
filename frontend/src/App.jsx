@@ -44,7 +44,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Task Tracker</h1>
+      <h1>Task Trackerr</h1>
       <h2>Total Tasks: {tasks.length}</h2>
       <div className="input-box">
         <input
